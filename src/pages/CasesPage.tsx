@@ -649,34 +649,24 @@ function CtaSection() {
       <div className="absolute -bottom-32 left-1/2 -translate-x-1/2 w-[800px] h-[800px] rounded-full bg-gradient-to-tr from-brand-200/40 to-transparent blur-3xl" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="max-w-2xl">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="grid lg:grid-cols-[1fr_auto] gap-10 lg:gap-16 items-center"
+        >
+          {/* Left: title + copy + features */}
+          <div>
             <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 leading-tight">
               为你的业务，配置一套
               <br />
               真正可执行的 <span className="text-gradient">AI 客服方案</span>
             </h2>
-            <p className="mt-5 text-base text-slate-600 leading-relaxed max-w-lg">
+            <p className="mt-5 text-base text-slate-600 leading-relaxed max-w-xl">
               告诉我们你的行业、平台与店铺规模，我们的解决方案顾问将为你提供匹配的产品方案与实施建议。
             </p>
-
-            <div className="mt-8 flex flex-col sm:flex-row gap-4">
-              <button className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 text-base font-semibold text-white rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 shadow-glow-soft hover:shadow-glow hover:scale-[1.02] transition-all">
-                预约方案演示
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </button>
-              <button className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-base font-semibold text-brand-600 rounded-xl border border-brand-200 bg-white hover:border-brand-400 hover:scale-[1.02] transition-all">
-                <Settings className="w-4 h-4" />
-                联系解决方案顾问
-              </button>
-            </div>
-
-            <ul className="mt-8 grid grid-cols-2 gap-3">
+            <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-3">
               {ctaFeatures.map((f) => (
                 <li key={f.text} className="flex items-center gap-2 text-sm text-slate-600">
                   <f.icon className="w-4 h-4 text-brand-500" />
@@ -684,9 +674,20 @@ function CtaSection() {
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
 
-        </div>
+          {/* Right: buttons */}
+          <div className="flex flex-col gap-4 lg:items-end">
+            <button className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 text-base font-semibold text-white rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 shadow-glow-soft hover:shadow-glow hover:scale-[1.02] transition-all lg:w-64">
+              预约方案演示
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </button>
+            <button className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-base font-semibold text-brand-600 rounded-xl border border-brand-200 bg-white hover:border-brand-400 hover:scale-[1.02] transition-all lg:w-64">
+              <Settings className="w-4 h-4" />
+              联系解决方案顾问
+            </button>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
