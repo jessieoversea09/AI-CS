@@ -55,6 +55,16 @@ const INITIAL_MESSAGES: Omit<Message, 'id'>[] = [
     content:
       '适合小学 3～6 年级学生使用，内容从基础到提高循序渐进，每章配有经典例题与举一反三练习，是培养奥数思维的优质教辅材料。',
   },
+  {
+    role: 'user',
+    kind: 'text',
+    content: '身高 176 适合什么公尺码？',
+  },
+  {
+    role: 'assistant',
+    kind: 'text',
+    content: '亲，这款是修身款，建议您穿着 XXL 码哦。',
+  },
 ];
 
 const AI_REPLIES = [
@@ -188,7 +198,7 @@ export default function ChatDemo({ onAiCountChange }: ChatDemoProps) {
 
   // Staggered reveal of preset messages.
   useEffect(() => {
-    const delays = [300, 1100, 2100, 3100];
+    const delays = [300, 1100, 2100, 3100, 4100];
     INITIAL_MESSAGES.forEach((msg, i) => {
       const t = setTimeout(() => {
         setMessages(prev => [...prev, { ...msg, id: nextId() } as Message]);
