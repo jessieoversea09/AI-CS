@@ -425,43 +425,13 @@ export default function FeaturesPage() {
         </div>
       </section>
 
-      {/* ── 柔和雾化过渡 ── */}
-      <div
-        aria-hidden="true"
-        style={{
-          position: "relative",
-          height: "160px",
-          overflow: "hidden",
-          pointerEvents: "none",
-        }}
-      >
-        {/* 横向椭圆光晕 */}
-        <span
+      {/* ── 区块分隔线 ── */}
+      <div aria-hidden="true" className="px-8 sm:px-16 lg:px-32">
+        <div
           style={{
-            position: "absolute",
-            left: "10%",
-            right: "10%",
-            top: "50%",
-            height: "120px",
-            transform: "translateY(-50%)",
+            height: "1px",
             background:
-              "linear-gradient(90deg,rgba(239,246,255,0) 0%,rgba(225,238,255,0.72) 20%,rgba(234,242,255,0.9) 50%,rgba(225,238,255,0.72) 80%,rgba(239,246,255,0) 100%)",
-            filter: "blur(28px)",
-            borderRadius: "999px",
-            WebkitMaskImage:
-              "linear-gradient(90deg,transparent 0%,black 18%,black 82%,transparent 100%)",
-            maskImage:
-              "linear-gradient(90deg,transparent 0%,black 18%,black 82%,transparent 100%)",
-          }}
-        />
-        {/* 上下方向柔化层 */}
-        <span
-          style={{
-            position: "absolute",
-            inset: 0,
-            background:
-              "linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(238,245,255,0.45) 40%,rgba(238,245,255,0.45) 60%,rgba(255,255,255,0) 100%)",
-            filter: "blur(18px)",
+              "linear-gradient(90deg,transparent 0%,rgba(186,210,245,0.55) 25%,rgba(186,210,245,0.85) 50%,rgba(186,210,245,0.55) 75%,transparent 100%)",
           }}
         />
       </div>
