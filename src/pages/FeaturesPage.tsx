@@ -380,15 +380,10 @@ export default function FeaturesPage() {
               >
                 <div className="absolute -right-6 -top-6 w-24 h-24 rounded-full bg-brand-200/40 blur-2xl pointer-events-none" />
                 <div className="flex items-center gap-3">
-                  <motion.div
-                    animate={{ rotateY: [0, 360] }}
-                    transition={{ duration: 12, repeat: Infinity, ease: 'linear' }}
-                    className="relative w-12 h-12 grid place-items-center shrink-0"
-                    style={{ transformStyle: 'preserve-3d' }}
-                  >
+                  <div className="relative w-12 h-12 grid place-items-center shrink-0">
                     <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 shadow-glow opacity-90" />
                     <Boxes className="relative w-6 h-6 text-white" />
-                  </motion.div>
+                  </div>
                   <div>
                     <p className="text-sm font-bold text-slate-900 leading-tight">从对话中学习</p>
                     <p className="text-sm font-bold text-gradient leading-tight">从经验中成长</p>
