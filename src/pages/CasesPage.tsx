@@ -649,7 +649,7 @@ function CtaSection() {
       <div className="absolute -bottom-32 left-1/2 -translate-x-1/2 w-[800px] h-[800px] rounded-full bg-gradient-to-tr from-brand-200/40 to-transparent blur-3xl" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="max-w-2xl">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -686,35 +686,6 @@ function CtaSection() {
             </ul>
           </motion.div>
 
-          {/* right visual */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="relative mx-auto w-full max-w-sm aspect-square"
-          >
-            <div className="absolute inset-8 rounded-full border border-brand-200/40" />
-            <div className="absolute inset-16 rounded-full border border-brand-200/30" />
-            <div className="absolute inset-0 grid place-items-center">
-              <div className="relative">
-                <div className="absolute -inset-10 rounded-full bg-brand-400/20 blur-3xl animate-pulseGlow" />
-                <div className="relative grid place-items-center w-28 h-28 rounded-3xl bg-gradient-to-br from-brand-400 to-brand-600 shadow-glow animate-floaty">
-                  <Boxes className="w-12 h-12 text-white" />
-                </div>
-              </div>
-            </div>
-            {orbitNodes.slice(0, 4).map((n, i) => {
-              const c = colorMap[n.color];
-              return (
-                <div key={n.label} className={`absolute ${n.pos} animate-floatySlow`} style={{ animationDelay: `${i * 0.5}s` }}>
-                  <div className={`grid place-items-center w-12 h-12 rounded-2xl bg-white shadow-card ring-2 ${c.ring}`}>
-                    <n.icon className={`w-5 h-5 ${c.text}`} />
-                  </div>
-                </div>
-              );
-            })}
-          </motion.div>
         </div>
       </div>
     </section>
