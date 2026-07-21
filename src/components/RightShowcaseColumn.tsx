@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { FileText, Headphones, Megaphone } from 'lucide-react';
+import { Headphones, Megaphone } from 'lucide-react';
 
 interface RightShowcaseColumnProps {
   visibleCount: number;
@@ -28,16 +28,9 @@ function FloatingCard({ delay = 0 }: { delay?: number }) {
     >
       <h4 className="text-xs font-semibold text-slate-800">Social Media Monitor</h4>
 
-      <div className="mt-3 flex items-center gap-2.5">
-        {[0, 1, 2].map(i => (
-          <div
-            key={i}
-            className="flex-1 h-12 rounded-lg bg-gradient-to-br from-slate-100 to-slate-50 border border-slate-100 flex items-center justify-center"
-          >
-            <FileText className="w-4 h-4 text-slate-300" />
-          </div>
-        ))}
-      </div>
+      <p className="mt-2 py-2 text-sm text-slate-600 leading-relaxed min-h-[3rem]">
+        xxx xxx xxx
+      </p>
 
       <div className="mt-3 flex flex-wrap gap-1.5">
         <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-brand-50 text-brand-600 text-[10px] font-medium">

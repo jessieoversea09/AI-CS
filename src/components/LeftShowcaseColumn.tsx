@@ -44,10 +44,9 @@ function SignupCard() {
         </div>
       </div>
 
-      <div className="mt-3.5 space-y-2">
-        <div className="h-2 rounded-full bg-slate-100" />
-        <div className="h-2 w-3/4 rounded-full bg-slate-100" />
-      </div>
+      <p className="mt-3.5 text-sm text-slate-500 leading-relaxed min-h-[2.5rem]">
+        xxx xxx xxx
+      </p>
 
       <button className="mt-3.5 w-full py-2 rounded-lg bg-brand-600 text-white text-xs font-semibold hover:bg-brand-700 transition-colors">
         Signup
@@ -75,11 +74,9 @@ function IntegrationCard() {
         </div>
       </div>
 
-      <div className="mt-3.5 space-y-2">
-        <div className="h-2 rounded-full bg-slate-100" />
-        <div className="h-2 w-5/6 rounded-full bg-slate-100" />
-        <div className="h-2 w-2/3 rounded-full bg-slate-100" />
-      </div>
+      <p className="mt-3.5 text-sm text-slate-500 leading-relaxed min-h-[2.5rem]">
+        xxx xxx xxx
+      </p>
 
       <div className="mt-3.5 flex items-center justify-between">
         <button className="px-3 py-1.5 rounded-lg bg-slate-100 text-slate-500 text-xs font-medium hover:bg-slate-200 transition-colors">
