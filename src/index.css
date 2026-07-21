@@ -30,6 +30,16 @@ body {
   background: rgba(51, 128, 255, 0.5);
 }
 
+@keyframes tree-line-flow {
+  from { stroke-dashoffset: 230; }
+  to { stroke-dashoffset: 0; }
+}
+
+.tree-line-flow {
+  stroke-dasharray: 30 200;
+  animation: tree-line-flow 2.4s linear infinite;
+}
+
 @layer utilities {
   .text-gradient {
     background: linear-gradient(90deg, #3380ff 0%, #5a9eff 50%, #8ac0ff 100%);

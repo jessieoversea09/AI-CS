@@ -27,6 +27,7 @@ import AIServiceIntro from '../components/AIServiceIntro';
 import AppShowcaseSection from '../components/AppShowcaseSection';
 import AIRulesEngine from '../components/AIRulesEngine';
 import HeroBackground from '../components/HeroBackground';
+import AnimatedTreeLines from '../components/AnimatedTreeLines';
 
 /* ─────────────── 数据 ─────────────── */
 
@@ -366,7 +367,9 @@ export default function FeaturesPage() {
       {/* ── Dashboard showcase ── */}
       <section className="relative pb-8 sm:pb-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-12 gap-5 lg:gap-6 items-start">
+          <div className="grid lg:grid-cols-12 gap-5 lg:gap-6 items-start relative">
+
+            <AnimatedTreeLines />
 
             {/* Left column: AI cube card + 4 nodes */}
             <div className="lg:col-span-3 flex lg:flex-col gap-4 order-2 lg:order-1">
