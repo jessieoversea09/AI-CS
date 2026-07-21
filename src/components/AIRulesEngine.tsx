@@ -174,8 +174,26 @@ export default function AIRulesEngine() {
   const s = stageStyles[activeStage];
 
   return (
-    <section className="relative py-16 sm:py-20">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section className="relative py-20 sm:py-28 overflow-hidden">
+      {/* ── 背景：浅蓝灰渐变，顶部/底部柔和消失 ── */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(180deg,rgba(240,246,255,0) 0%,rgba(236,244,255,0.72) 12%,rgba(232,242,255,0.88) 40%,rgba(232,242,255,0.88) 60%,rgba(236,244,255,0.72) 88%,rgba(240,246,255,0) 100%)",
+        }}
+      />
+      {/* 左右两侧柔和收边 */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 80% 60% at 50% 50%,rgba(214,233,255,0.30) 0%,rgba(214,233,255,0) 100%)",
+        }}
+      />
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* ── Header ── */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
