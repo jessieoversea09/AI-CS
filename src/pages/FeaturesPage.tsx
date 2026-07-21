@@ -425,16 +425,7 @@ export default function FeaturesPage() {
         </div>
       </section>
 
-      {/* ── 区块分隔线 ── */}
-      <div aria-hidden="true" className="px-8 sm:px-16 lg:px-32">
-        <div
-          style={{
-            height: "1px",
-            background:
-              "linear-gradient(90deg,transparent 0%,rgba(186,210,245,0.55) 25%,rgba(186,210,245,0.85) 50%,rgba(186,210,245,0.55) 75%,transparent 100%)",
-          }}
-        />
-      </div>
+
 
       {/* ── AI 规则引擎 展示页（最后一页）── */}
       <AIRulesEngine />
