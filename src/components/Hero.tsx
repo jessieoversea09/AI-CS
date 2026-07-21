@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Play, Sparkles } from 'lucide-react';
-import ChatDemo from './ChatDemo';
+import ChatShowcase from './ChatShowcase';
 
 export default function Hero() {
   return (
@@ -53,7 +53,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="mt-14 sm:mt-16"
         >
-          <ChatDemo />
+          <ChatShowcase />
         </motion.div>
 
       </div>

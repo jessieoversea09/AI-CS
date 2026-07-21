@@ -166,7 +166,11 @@ function TypingIndicator() {
 }
 
 // ── Main component ─────────────────────────────────────────────────────────────
-export default function ChatDemo() {
+interface ChatDemoProps {
+  onAiCountChange?: (count: number) => void;
+}
+
+export default function ChatDemo({ onAiCountChange }: ChatDemoProps) {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [inputVal, setInputVal] = useState('');
@@ -202,6 +206,12 @@ export default function ChatDemo() {
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }, [messages, isLoading]);
+
+  // Notify parent of AI message count for right-side card linkage.
+  const aiCount = messages.filter(m => m.role === 'assistant').length;
+  useEffect(() => {
+    onAiCountChange?.(aiCount);
+  }, [aiCount, onAiCountChange]);
 
   function sendMessage() {
     if (isLoading) return; // hard lock — one question at a time

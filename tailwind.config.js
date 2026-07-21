@@ -61,6 +61,10 @@ export default {
           '0%,100%': { boxShadow: '0 0 0 0 rgba(51,128,255,0)' },
           '50%': { boxShadow: '0 0 24px 4px rgba(51,128,255,0.25)' },
         },
+        softFloat: {
+          '0%,100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-6px)' },
+        },
       },
       animation: {
         floaty: 'floaty 6s ease-in-out infinite',
@@ -70,6 +74,7 @@ export default {
         marquee: 'marquee 28s linear infinite',
         fadeInUp: 'fadeInUp 0.7s ease-out forwards',
         pulseGlow: 'pulseGlow 3s ease-in-out infinite',
+        softFloat: 'softFloat 4s ease-in-out infinite',
       },
     },
   },
