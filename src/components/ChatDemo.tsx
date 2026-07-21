@@ -180,25 +180,18 @@ export default function ChatDemo() {
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const phaseRef = useRef(0);
-  const timersRef = useRef<ReturnType<typeof setTimeout>[]>([]);
-  const startedRef = useRef(false);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Staggered reveal of preset messages
   useEffect(() => {
-    if (startedRef.current) return;
-    startedRef.current = true;
-
     const delays = [400, 1200, 2200, 3300, 4200, 5300];
     INITIAL.forEach((msg, i) => {
-      timersRef.current.push(
-        setTimeout(() => {
-          setVisible(prev => [...prev, { ...msg, id: i }]);
-        }, delays[i] ?? i * 1000)
-      );
+      timerRef.current = setTimeout(() => {
+        setVisible(prev => [...prev, { ...msg, id: i }]);
+      }, delays[i] ?? i * 1000);
     });
     return () => {
-      timersRef.current.forEach(clearTimeout);
-      timersRef.current = [];
+      if (timerRef.current) clearTimeout(timerRef.current);
     };
   }, []);
 
