@@ -152,7 +152,7 @@ function StatsCard() {
 // ── Exported left column ──────────────────────────────────────────────────────
 export default function LeftShowcaseColumn() {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 translate-y-6">
       <SignupCard />
       <IntegrationCard />
       <StatsCard />
