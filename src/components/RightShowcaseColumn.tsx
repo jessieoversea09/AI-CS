@@ -68,6 +68,15 @@ export default function RightShowcaseColumn({ visibleCount }: RightShowcaseColum
             <FloatingCard delay={0.15} />
           </motion.div>
         )}
+        {visibleCount >= 3 && (
+          <motion.div
+            key="card-3"
+            exit={{ opacity: 0, x: 16 }}
+            transition={{ duration: 0.3 }}
+          >
+            <FloatingCard delay={0.3} />
+          </motion.div>
+        )}
       </AnimatePresence>
     </div>
   );
