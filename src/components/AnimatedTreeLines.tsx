@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-type LineDef = { d: string; delay: string };
+type LineDef = { x1: number; y1: number; x2: number; y2: number; delay: string };
 
 const DELAYS = ['0s', '0.2s', '0.4s', '0.15s', '0.35s'];
 
@@ -30,9 +30,7 @@ export default function AnimatedTreeLines() {
         const r = el.getBoundingClientRect();
         const startX = r.right - containerRect.left;
         const startY = r.top + r.height / 2 - containerRect.top;
-        const midX = (startX + endX) / 2;
-        const d = `M ${startX},${startY} C ${midX},${startY} ${midX},${endY} ${endX},${endY}`;
-        return { d, delay: DELAYS[i % DELAYS.length] };
+        return { x1: startX, y1: startY, x2: endX, y2: endY, delay: DELAYS[i % DELAYS.length] };
       });
 
       setLines(newLines);
@@ -53,7 +51,7 @@ export default function AnimatedTreeLines() {
   return (
     <svg
       ref={svgRef}
-      className="absolute inset-0 w-full h-full pointer-events-none z-40"
+      className="absolute inset-0 w-full h-full pointer-events-none z-0"
       fill="none"
       style={{ opacity: ready ? 1 : 0, transition: 'opacity 0.4s ease' }}
     >
@@ -74,9 +72,20 @@ export default function AnimatedTreeLines() {
 
       {lines.map((line, i) => (
         <g key={i}>
-          <path d={line.d} stroke="#E2E8F0" strokeWidth="2" strokeLinecap="round" />
-          <path
-            d={line.d}
+          <line
+            x1={line.x1}
+            y1={line.y1}
+            x2={line.x2}
+            y2={line.y2}
+            stroke="#E2E8F0"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
+          <line
+            x1={line.x1}
+            y1={line.y1}
+            x2={line.x2}
+            y2={line.y2}
             stroke="url(#treeLineGradient)"
             strokeWidth="3"
             strokeLinecap="round"

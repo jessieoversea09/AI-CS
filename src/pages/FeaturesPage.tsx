@@ -264,7 +264,7 @@ function SideCard({
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.5, delay }}
-      className="rounded-2xl border border-slate-200 bg-white p-4 shadow-card hover:shadow-glow-soft transition-shadow"
+      className="rounded-2xl border border-slate-200 bg-white p-4 shadow-card hover:shadow-glow-soft transition-shadow relative z-10"
     >
       <div className="flex items-center gap-2">
         <div className="grid place-items-center w-8 h-8 rounded-lg bg-brand-50 text-brand-600 shrink-0">
@@ -376,7 +376,7 @@ export default function FeaturesPage() {
             <AnimatedTreeLines />
 
             {/* Left column: AI cube card + 4 nodes */}
-            <div className="lg:col-span-3 flex lg:flex-col gap-4 order-2 lg:order-1">
+            <div className="lg:col-span-3 flex lg:flex-col gap-4 order-2 lg:order-1 relative z-10">
               {/* AI cube card — top of left column */}
               <motion.div
                 data-tree-start
@@ -384,7 +384,7 @@ export default function FeaturesPage() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: '-60px' }}
                 transition={{ duration: 0.5 }}
-                className="rounded-2xl border border-slate-200 bg-gradient-to-b from-brand-50 to-white p-4 shadow-card overflow-hidden relative"
+                className="rounded-2xl border border-slate-200 bg-gradient-to-b from-brand-50 to-white p-4 shadow-card overflow-hidden relative z-10"
               >
                 <div className="absolute -right-6 -top-6 w-24 h-24 rounded-full bg-brand-200/40 blur-2xl pointer-events-none" />
                 <div className="flex items-center gap-3">
@@ -423,7 +423,7 @@ export default function FeaturesPage() {
               transition={{ duration: 0.6 }}
               className="lg:col-span-9 order-1 lg:order-2"
             >
-              <div className="lg:max-w-4xl lg:mx-auto">
+              <div className="lg:max-w-4xl lg:mx-auto relative z-10">
                 <DashboardMock />
               </div>
             </motion.div>
