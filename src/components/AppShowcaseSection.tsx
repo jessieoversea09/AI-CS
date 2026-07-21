@@ -97,33 +97,55 @@ export default function AppShowcaseSection() {
           <div className="absolute -inset-4 bg-gradient-to-tr from-brand-300/20 via-brand-200/10 to-transparent rounded-3xl blur-2xl pointer-events-none" />
 
           {/* Floating Widget — bottom-left */}
-          <div className="absolute -bottom-6 -left-6 sm:-left-15 z-20 w-64 pointer-events-none select-none">
-            <div className="rounded-2xl bg-white/90 backdrop-blur-sm p-5 shadow-[0_8px_30px_rgb(0,0,0,0.10)] border border-slate-100">
-              <div className="flex items-center gap-2.5 mb-2">
-                <span className="flex items-center justify-center w-6 h-6 rounded-lg bg-orange-100">
-                  <span className="w-2 h-2 rounded-full bg-orange-400 block" />
-                </span>
-                <p className="text-gray-800 font-semibold text-base leading-none">策略可视化配置</p>
-              </div>
-              <p className="text-gray-500 text-sm leading-relaxed">
-                可视化策略编辑器，企业级权限管理。从加购到售后全流程自动化，智能催付+跟单+关怀
-              </p>
-            </div>
+          <div className="absolute -bottom-6 -left-6 sm:-left-15 z-50 w-64 pointer-events-none select-none">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 0.5, ease: 'easeOut' }}
+            >
+              <motion.div
+                animate={{ y: [0, -6, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
+                className="rounded-2xl bg-white/90 backdrop-blur-sm p-5 shadow-[0_8px_30px_rgb(0,0,0,0.10)] border border-slate-100"
+              >
+                <div className="flex items-center gap-2.5 mb-2">
+                  <span className="flex items-center justify-center w-6 h-6 rounded-lg bg-orange-100">
+                    <span className="w-2 h-2 rounded-full bg-orange-400 block" />
+                  </span>
+                  <p className="text-gray-800 font-semibold text-base leading-none">策略可视化配置</p>
+                </div>
+                <p className="text-gray-500 text-sm leading-relaxed">
+                  可视化策略编辑器，企业级权限管理。从加购到售后全流程自动化，智能催付+跟单+关怀
+                </p>
+              </motion.div>
+            </motion.div>
           </div>
 
           {/* Floating Widget — top-right */}
-          <div className="absolute -top-1 -right-6 sm:-right-10 z-20 w-72 pointer-events-none select-none">
-            <div className="rounded-2xl bg-white/90 backdrop-blur-sm p-5 shadow-[0_8px_30px_rgb(0,0,0,0.10)] border border-slate-100">
-              <div className="flex items-center gap-2.5 mb-2">
-                <span className="flex items-center justify-center w-6 h-6 rounded-lg bg-blue-100">
-                  <span className="w-2 h-2 rounded-full bg-blue-400 block" />
-                </span>
-                <p className="text-gray-800 font-semibold text-base leading-none">智能客户分层</p>
-              </div>
-              <p className="text-gray-500 text-sm leading-relaxed">
-                新老客自动识别，触发个性化欢迎语，提升客户体验和复购率。
-              </p>
-            </div>
+          <div className="absolute -top-1 -right-6 sm:-right-10 z-50 w-72 pointer-events-none select-none">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 0.5, ease: 'easeOut' }}
+            >
+              <motion.div
+                animate={{ y: [0, -6, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
+                className="rounded-2xl bg-white/90 backdrop-blur-sm p-5 shadow-[0_8px_30px_rgb(0,0,0,0.10)] border border-slate-100"
+              >
+                <div className="flex items-center gap-2.5 mb-2">
+                  <span className="flex items-center justify-center w-6 h-6 rounded-lg bg-blue-100">
+                    <span className="w-2 h-2 rounded-full bg-blue-400 block" />
+                  </span>
+                  <p className="text-gray-800 font-semibold text-base leading-none">智能客户分层</p>
+                </div>
+                <p className="text-gray-500 text-sm leading-relaxed">
+                  新老客自动识别，触发个性化欢迎语，提升客户体验和复购率。
+                </p>
+              </motion.div>
+            </motion.div>
           </div>
 
           <div className="relative rounded-2xl border border-slate-200 bg-white shadow-card overflow-hidden transition-all duration-300 hover:scale-[1.01] hover:-translate-y-1 hover:shadow-glow-soft">
