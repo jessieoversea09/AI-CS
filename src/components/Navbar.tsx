@@ -5,7 +5,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 const navLinks = [
   { label: '产品功能', href: '/features' },
-  { label: '客户案例', href: '/cases' },
+  { label: '解决方案', href: '/cases' },
   { label: '定价', href: '/pricing' },
   { label: '帮助中心', href: '/help' },
   { label: '商务合作', href: '/cooperation' },

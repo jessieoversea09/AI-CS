@@ -122,7 +122,7 @@ function HeroSection() {
           >
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-200 bg-brand-50/80 text-brand-700 text-sm font-medium">
               <Sparkles className="w-3.5 h-3.5" />
-              如意 AI · 客户案例
+              如意 AI · 解决方案
             </span>
 
             <h1 className="mt-6 text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900 leading-[1.15]">
