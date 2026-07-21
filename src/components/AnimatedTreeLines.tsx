@@ -1,21 +1,61 @@
-const LINES = [
-  { y1: 60, delay: '0s' },
-  { y1: 160, delay: '0.2s' },
-  { y1: 260, delay: '0.4s' },
-  { y1: 360, delay: '0.15s' },
-  { y1: 460, delay: '0.35s' },
-];
+import { useEffect, useRef, useState } from 'react';
 
-const CENTER_Y = 260;
-const END_X = 100;
+type LineDef = { d: string; delay: string };
+
+const DELAYS = ['0s', '0.2s', '0.4s', '0.15s', '0.35s'];
 
 export default function AnimatedTreeLines() {
+  const svgRef = useRef<SVGSVGElement>(null);
+  const [lines, setLines] = useState<LineDef[]>([]);
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    const compute = () => {
+      const svg = svgRef.current;
+      if (!svg) return;
+      const containerRect = svg.getBoundingClientRect();
+      if (containerRect.width === 0) return;
+
+      const starts = Array.from(
+        document.querySelectorAll<HTMLElement>('[data-tree-start]'),
+      );
+      const end = document.querySelector<HTMLElement>('[data-tree-end]');
+      if (!starts.length || !end) return;
+
+      const endRect = end.getBoundingClientRect();
+      const endX = endRect.left - containerRect.left;
+      const endY = endRect.top + endRect.height / 2 - containerRect.top;
+
+      const newLines: LineDef[] = starts.map((el, i) => {
+        const r = el.getBoundingClientRect();
+        const startX = r.right - containerRect.left;
+        const startY = r.top + r.height / 2 - containerRect.top;
+        const midX = (startX + endX) / 2;
+        const d = `M ${startX},${startY} C ${midX},${startY} ${midX},${endY} ${endX},${endY}`;
+        return { d, delay: DELAYS[i % DELAYS.length] };
+      });
+
+      setLines(newLines);
+      setReady(true);
+    };
+
+    compute();
+    const t = setTimeout(compute, 300);
+    const rt = setTimeout(compute, 1000);
+    window.addEventListener('resize', compute);
+    return () => {
+      window.removeEventListener('resize', compute);
+      clearTimeout(t);
+      clearTimeout(rt);
+    };
+  }, []);
+
   return (
     <svg
-      className="absolute inset-y-0 left-0 w-full h-full pointer-events-none z-10"
-      viewBox="0 0 100 520"
-      preserveAspectRatio="none"
+      ref={svgRef}
+      className="absolute inset-0 w-full h-full pointer-events-none z-40"
       fill="none"
+      style={{ opacity: ready ? 1 : 0, transition: 'opacity 0.4s ease' }}
     >
       <defs>
         <linearGradient id="treeLineGradient" x1="0" y1="0" x2="1" y2="0">
@@ -32,23 +72,20 @@ export default function AnimatedTreeLines() {
         </filter>
       </defs>
 
-      {LINES.map((line, i) => {
-        const d = `M 0,${line.y1} C 35,${line.y1} 65,${CENTER_Y} ${END_X},${CENTER_Y}`;
-        return (
-          <g key={i}>
-            <path d={d} stroke="#E2E8F0" strokeWidth="2" strokeLinecap="round" />
-            <path
-              d={d}
-              stroke="url(#treeLineGradient)"
-              strokeWidth="3"
-              strokeLinecap="round"
-              filter="url(#treeGlow)"
-              className="tree-line-flow"
-              style={{ animationDelay: line.delay }}
-            />
-          </g>
-        );
-      })}
+      {lines.map((line, i) => (
+        <g key={i}>
+          <path d={line.d} stroke="#E2E8F0" strokeWidth="2" strokeLinecap="round" />
+          <path
+            d={line.d}
+            stroke="url(#treeLineGradient)"
+            strokeWidth="3"
+            strokeLinecap="round"
+            filter="url(#treeGlow)"
+            className="tree-line-flow"
+            style={{ animationDelay: line.delay }}
+          />
+        </g>
+      ))}
     </svg>
   );
 }

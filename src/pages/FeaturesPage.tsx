@@ -182,6 +182,7 @@ function DashboardMock() {
             {sidebarMenu.map((m) => (
               <div
                 key={m.label}
+                data-tree-end={m.active ? '' : undefined}
                 className={`flex items-center gap-2 px-2.5 py-2 rounded-lg text-[11px] font-medium transition-colors ${
                   m.active
                     ? 'bg-brand-500 text-white shadow-glow-soft'
@@ -248,14 +249,17 @@ function SideCard({
   title,
   desc,
   delay,
+  withTreeStart,
 }: {
   icon: LucideIcon;
   title: string;
   desc: string;
   delay: number;
+  withTreeStart?: boolean;
 }) {
   return (
     <motion.div
+      data-tree-start={withTreeStart ? '' : undefined}
       initial={{ opacity: 0, x: -20 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true, margin: '-60px' }}
@@ -367,7 +371,7 @@ export default function FeaturesPage() {
       {/* ── Dashboard showcase ── */}
       <section className="relative pb-8 sm:pb-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-12 gap-5 lg:gap-6 items-start relative">
+          <div className="grid lg:grid-cols-12 gap-5 lg:gap-10 items-start relative">
 
             <AnimatedTreeLines />
 
@@ -375,6 +379,7 @@ export default function FeaturesPage() {
             <div className="lg:col-span-3 flex lg:flex-col gap-4 order-2 lg:order-1">
               {/* AI cube card — top of left column */}
               <motion.div
+                data-tree-start
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: '-60px' }}
@@ -405,6 +410,7 @@ export default function FeaturesPage() {
                   title={n.title}
                   desc={n.desc}
                   delay={(i + 1) * 0.1}
+                  withTreeStart
                 />
               ))}
             </div>
@@ -417,7 +423,9 @@ export default function FeaturesPage() {
               transition={{ duration: 0.6 }}
               className="lg:col-span-9 order-1 lg:order-2"
             >
-              <DashboardMock />
+              <div className="lg:max-w-4xl lg:mx-auto">
+                <DashboardMock />
+              </div>
             </motion.div>
           </div>
         </div>
