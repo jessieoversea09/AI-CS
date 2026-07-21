@@ -236,10 +236,7 @@ export default function ChatDemo() {
 
   return (
     <div className="w-full flex justify-center px-4">
-      <div
-        className="w-full max-w-[480px] rounded-2xl overflow-hidden shadow-[0_24px_80px_rgba(60,50,120,0.18)] border border-white/60"
-        style={{ background: 'linear-gradient(160deg, #E8DFF5 0%, #EDF2F4 100%)' }}
-      >
+      <div className="w-full max-w-[480px] rounded-2xl overflow-hidden shadow-[0_24px_80px_rgba(30,58,138,0.12)] border border-slate-200/70 bg-slate-50">
         {/* Header */}
         <div
           className="flex items-center gap-3 px-5 py-3.5 border-b border-white/60"
