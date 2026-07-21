@@ -425,6 +425,20 @@ export default function FeaturesPage() {
         </div>
       </section>
 
+      {/* ── 区块分界线 ── */}
+      <div className="relative py-10 sm:py-14 overflow-hidden">
+        {/* 渐变背景条带 */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white via-slate-100/60 to-white pointer-events-none" />
+        {/* 横向装饰线 */}
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center gap-6">
+          <div className="flex-1 h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent" />
+          <span className="shrink-0 grid place-items-center w-8 h-8 rounded-full border border-slate-200 bg-white shadow-sm">
+            <span className="w-2.5 h-2.5 rounded-full bg-gradient-to-br from-brand-400 to-brand-600" />
+          </span>
+          <div className="flex-1 h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent" />
+        </div>
+      </div>
+
       {/* ── AI 规则引擎 展示页（最后一页）── */}
       <AIRulesEngine />
 
