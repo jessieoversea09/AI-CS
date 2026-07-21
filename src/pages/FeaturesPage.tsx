@@ -425,18 +425,45 @@ export default function FeaturesPage() {
         </div>
       </section>
 
-      {/* ── 区块分界线 ── */}
-      <div className="relative py-10 sm:py-14 overflow-hidden">
-        {/* 渐变背景条带 */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white via-slate-100/60 to-white pointer-events-none" />
-        {/* 横向装饰线 */}
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center gap-6">
-          <div className="flex-1 h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent" />
-          <span className="shrink-0 grid place-items-center w-8 h-8 rounded-full border border-slate-200 bg-white shadow-sm">
-            <span className="w-2.5 h-2.5 rounded-full bg-gradient-to-br from-brand-400 to-brand-600" />
-          </span>
-          <div className="flex-1 h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent" />
-        </div>
+      {/* ── 柔和雾化过渡 ── */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "relative",
+          height: "160px",
+          overflow: "hidden",
+          pointerEvents: "none",
+        }}
+      >
+        {/* 横向椭圆光晕 */}
+        <span
+          style={{
+            position: "absolute",
+            left: "10%",
+            right: "10%",
+            top: "50%",
+            height: "120px",
+            transform: "translateY(-50%)",
+            background:
+              "linear-gradient(90deg,rgba(239,246,255,0) 0%,rgba(225,238,255,0.72) 20%,rgba(234,242,255,0.9) 50%,rgba(225,238,255,0.72) 80%,rgba(239,246,255,0) 100%)",
+            filter: "blur(28px)",
+            borderRadius: "999px",
+            WebkitMaskImage:
+              "linear-gradient(90deg,transparent 0%,black 18%,black 82%,transparent 100%)",
+            maskImage:
+              "linear-gradient(90deg,transparent 0%,black 18%,black 82%,transparent 100%)",
+          }}
+        />
+        {/* 上下方向柔化层 */}
+        <span
+          style={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(238,245,255,0.45) 40%,rgba(238,245,255,0.45) 60%,rgba(255,255,255,0) 100%)",
+            filter: "blur(18px)",
+          }}
+        />
       </div>
 
       {/* ── AI 规则引擎 展示页（最后一页）── */}
