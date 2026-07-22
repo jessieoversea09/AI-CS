@@ -379,7 +379,6 @@ export default function FeaturesPage() {
             <div className="lg:col-span-3 flex lg:flex-col gap-4 order-2 lg:order-1 relative z-10">
               {/* AI cube card — top of left column */}
               <motion.div
-                data-tree-start
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: '-60px' }}
@@ -415,7 +414,7 @@ export default function FeaturesPage() {
               ))}
             </div>
 
-            {/* Center: full-width dashboard */}
+            {/* Center: full-width dashboard (shrunk) */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -423,7 +422,7 @@ export default function FeaturesPage() {
               transition={{ duration: 0.6 }}
               className="lg:col-span-9 order-1 lg:order-2"
             >
-              <div className="lg:max-w-4xl lg:mx-auto relative z-10">
+              <div className="lg:max-w-3xl lg:mx-auto relative z-10 px-2 lg:px-4">
                 <DashboardMock />
               </div>
             </motion.div>

@@ -31,13 +31,13 @@ body {
 }
 
 @keyframes tree-line-flow {
-  from { stroke-dashoffset: 230; }
+  from { stroke-dashoffset: 100; }
   to { stroke-dashoffset: 0; }
 }
 
 .tree-line-flow {
-  stroke-dasharray: 30 200;
-  animation: tree-line-flow 2.4s linear infinite;
+  stroke-dasharray: 18 82;
+  animation: tree-line-flow 2.6s linear infinite;
 }
 
 @layer utilities {

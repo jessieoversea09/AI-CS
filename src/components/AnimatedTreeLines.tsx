@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 
-type LineDef = { x1: number; y1: number; x2: number; y2: number; delay: string };
+type PathDef = { d: string; delay: string };
 
-const DELAYS = ['0s', '0.2s', '0.4s', '0.15s', '0.35s'];
+const DELAYS = ['0s', '0.3s', '0.15s', '0.45s'];
 
 export default function AnimatedTreeLines() {
   const svgRef = useRef<SVGSVGElement>(null);
-  const [lines, setLines] = useState<LineDef[]>([]);
+  const [paths, setPaths] = useState<PathDef[]>([]);
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
@@ -26,14 +26,16 @@ export default function AnimatedTreeLines() {
       const endX = endRect.left - containerRect.left;
       const endY = endRect.top + endRect.height / 2 - containerRect.top;
 
-      const newLines: LineDef[] = starts.map((el, i) => {
+      const newPaths: PathDef[] = starts.map((el, i) => {
         const r = el.getBoundingClientRect();
         const startX = r.right - containerRect.left;
         const startY = r.top + r.height / 2 - containerRect.top;
-        return { x1: startX, y1: startY, x2: endX, y2: endY, delay: DELAYS[i % DELAYS.length] };
+        const dx = Math.abs(endX - startX) * 0.5;
+        const d = `M ${startX} ${startY} C ${startX + dx} ${startY}, ${endX - dx} ${endY}, ${endX} ${endY}`;
+        return { d, delay: DELAYS[i % DELAYS.length] };
       });
 
-      setLines(newLines);
+      setPaths(newPaths);
       setReady(true);
     };
 
@@ -41,10 +43,16 @@ export default function AnimatedTreeLines() {
     const t = setTimeout(compute, 300);
     const rt = setTimeout(compute, 1000);
     window.addEventListener('resize', compute);
+
+    const observer = new ResizeObserver(compute);
+    const endEl = document.querySelector('[data-tree-end]');
+    if (endEl) observer.observe(endEl);
+
     return () => {
       window.removeEventListener('resize', compute);
       clearTimeout(t);
       clearTimeout(rt);
+      observer.disconnect();
     };
   }, []);
 
@@ -68,30 +76,31 @@ export default function AnimatedTreeLines() {
             <feMergeNode in="SourceGraphic" />
           </feMerge>
         </filter>
+        <marker id="treeArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#3B82F6" />
+        </marker>
       </defs>
 
-      {lines.map((line, i) => (
+      {paths.map((p, i) => (
         <g key={i}>
-          <line
-            x1={line.x1}
-            y1={line.y1}
-            x2={line.x2}
-            y2={line.y2}
+          <path
+            d={p.d}
             stroke="#E2E8F0"
             strokeWidth="2"
             strokeLinecap="round"
+            fill="none"
           />
-          <line
-            x1={line.x1}
-            y1={line.y1}
-            x2={line.x2}
-            y2={line.y2}
+          <path
+            d={p.d}
             stroke="url(#treeLineGradient)"
             strokeWidth="3"
             strokeLinecap="round"
+            fill="none"
             filter="url(#treeGlow)"
+            markerEnd="url(#treeArrow)"
+            pathLength={100}
             className="tree-line-flow"
-            style={{ animationDelay: line.delay }}
+            style={{ animationDelay: p.delay }}
           />
         </g>
       ))}
